@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="pop-Up">
+        <p>
+            Double Click on the icon to access ChatBot!
+        </p>
+    </div>
+    <img src="chatbot.jpg" alt="ChatBot" id="chatbot-image" onclick="toggleHide()">
+    <div class="chatBot">
+        <header>
+            <h2>
+                ChatBot
+            </h2>
+            <img src="cross.png" alt="Cross/Cut" id="cross" onclick="cancel()">
+        </header>
+        <ul class="chatbox">
+            <li class="chat-incoming chat">
+                <p>
+                    Hey there 👍
+                    <br>How can I help you today?
+                </p>
+            </li>
+            <br>
+        </ul>
+
+        <br>
+        <div class="chat-input">
+            <span><img src="send.png" alt="Send Button" id="sendBTN"></span>
+            <textarea rows="0" cols="17" placeholder="Enter a message..."></textarea>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

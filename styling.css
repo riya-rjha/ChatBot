@@ -1,0 +1,30 @@
+.chat-incoming {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background-color: #80808026;
+    width: 47%;
+}
+
+.chat-incoming p {
+    line-height: 23px;
+    padding: 3px 0px;
+    margin: 43px;
+    width: 92%;
+}
+
+.chat-outgoing {
+    /* border: 1px solid brown; */
+    width: 47%;
+    float: right;
+    margin: 15px 0px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #a3ddff;
+}
+
+.chat-outgoing p {
+    line-height: 20px;
+    padding: 10px 7px;
+}
