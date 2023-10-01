@@ -4,7 +4,7 @@ const chatbox = document.querySelector(".chatbox");
 const chatBotImage = document.querySelector("#chatbot-image");
 
 let userMessage;
-const API_KEY = "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";
+const API_KEY = "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";
 
 const createChatLi = (message, className) => {
 
