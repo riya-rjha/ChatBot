@@ -1,14 +1,13 @@
 const chatInput = document.querySelector('.chat-input textarea');
-const sendChatBtn = document.querySelector('.chat-input span');
+const sendChatBtn = document.querySelector('.chat-input button');
 const chatbox = document.querySelector(".chatbox");
-const chatBotImage = document.querySelector("#chatbot-image");
 
 let userMessage;
-const API_KEY = "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";
+const API_KEY = "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";
+
+//OpenAI Free APIKey
 
 const createChatLi = (message, className) => {
-
-
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
     let chatContent = className === "chat-outgoing" ? `<p>${message}</p>` : `<p>${message}</p>`;
@@ -34,14 +33,24 @@ const generateResponse = (incomingChatLi) => {
                 }
             ]
         })
-    }
-    fetch(API_URL,requestOptions).then(res => res.json()).then(data => {
-        messageElement.textContent = data.choices[0].message.content;
-    }).catch((error) => {
-        messageElement.classList.add("error");
-        messageElement.textContent = "Oops! Something went wrong. Please try again!";
-    }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
-}
+    };
+
+    fetch(API_URL, requestOptions)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return res.json();
+        })
+        .then(data => {
+            messageElement.textContent = data.choices[0].message.content;
+        })
+        .catch((error) => {
+            messageElement.classList.add("error");
+            messageElement.textContent = "Oops! Something went wrong. Please try again!";
+        })
+        .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+};
 
 
 const handleChat = () => {
@@ -49,7 +58,6 @@ const handleChat = () => {
     if (!userMessage) {
         return;
     }
-    // createChatLi(userMessage, "chat-outgoing");
     chatbox.appendChild(createChatLi(userMessage, "chat-outgoing"));
     chatbox.scrollTo(0, chatbox.scrollHeight);
 
@@ -59,35 +67,17 @@ const handleChat = () => {
         chatbox.scrollTo(0, chatbox.scrollHeight);
         generateResponse(incomingChatLi);
     }, 600);
-
 }
 
 sendChatBtn.addEventListener("click", handleChat);
 
-function toggleHide() {
-    let image = document.getElementById('chatbot-image');
-    let chatbotcomplete = document.querySelector('.chatBot');
-    let popUpMsg = document.querySelector('.pop-Up');
-    if (chatbotcomplete.style.display == 'none') {
-        chatbotcomplete.style.display = 'block';
-        popUpMsg.style.display = 'none';
-    }
-    else{
-        chatbotcomplete.style.display='none';
-        popUpMsg.style.display = 'block';
-    }
-
-}
-
-function cancel(){
-    let crossNow = document.getElementById('cross');
+function cancel() {
     let chatbotcomplete = document.querySelector(".chatBot");
-    let popUpMsg = document.querySelector('.pop-Up');
-    if (chatbotcomplete.style.display != 'none'){
-        chatbotcomplete.style.display="none";
-        popUpMsg.style.display = 'block';
+    if (chatbotcomplete.style.display != 'none') {
+        chatbotcomplete.style.display = "none";
+        let lastMsg = document.createElement("p");
+        lastMsg.textContent = 'Thanks for using our Chatbot!';
+        lastMsg.classList.add('lastMessage');
+        document.body.appendChild(lastMsg)
     }
 }
-
-
-
