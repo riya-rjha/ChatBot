@@ -3,7 +3,7 @@ const sendChatBtn = document.querySelector('.chat-input button');
 const chatbox = document.querySelector(".chatbox");
 
 let userMessage;
-const API_KEY = "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";
+const API_KEY = "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";
 
 //OpenAI Free APIKey
 
